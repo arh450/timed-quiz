@@ -16,14 +16,14 @@
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
                 <button id="view-highscores-button">View Highscores</button>
-                <p class="bg-light" id="time-remaining">Time Remaining: 0</p>
+                <p class="bg-light" id="time-remaining">Time Remaining: -s</p>
             </div>
         </nav>
     </header>
 
     <!-- START QUIZ CONTAINER -->
     <section>
-        <div class="container">
+        <div class="container" id="start-quiz-container">
             <div class="area-1">
                 <h2 id="quiz-title">Baseball Quiz Challenge</h2>
             </div>
@@ -40,16 +40,16 @@
 
     <!-- DURING QUIZ CONTAINER -->
     <section>
-        <div class="container">
+        <div class="container" id="during-quiz-container">
             <div class="area-1">
                 <h2 id="question">Question</h2>
             </div>
             <div class="area-2">
-                <ul>
-                    <li><button>Choice 1</button></li>
-                    <li><button>Choice 2</button></li>
-                    <li><button>Choice 3</button></li>
-                    <li><button>Choice 4</button></li>
+                <ul id="answer-area">
+                    <li>Answer 1</li>
+                    <li>Answer 2</li>
+                    <li>Answer 3</li>
+                    <li>Answer 4</li>
                 </ul>
             </div>
             <div class="area-3">
@@ -61,7 +61,7 @@
     <!-- END QUIZ CONTAINER -->
 
     <section>
-        <div class="container">
+        <div class="container" id="end-quiz-container">
             <div class="area-1">
                 <h2 id="end-title">All Done!</h2>
             </div>
@@ -79,16 +79,16 @@
     <!-- HIGHSCORE CONTAINER -->
 
     <section>
-        <div class="container">
+        <div class="container d-none" id="highscore-container">
             <div class="area-1">
                 <h2 id="highscore-title">Highscores</h2>
             </div>
             <div class="area-2">
                 <ul>
-                    <li><button>Name</button></li>
-                    <li><button>Name</button></li>
-                    <li><button>Name</button></li>
-                    <li><button>Name</button></li>
+                    <li>Name</li>
+                    <li>Name</li>
+                    <li>Name</li>
+                    <li>Name</li>
                 </ul>
                 <div class="area-3">
                     <button id="goback-button">Go Back</button>
