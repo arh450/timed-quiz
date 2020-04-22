@@ -1,1 +1,1 @@
-# timed-quize
+# timed-quiz
