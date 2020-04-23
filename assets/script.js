@@ -1,5 +1,6 @@
 var score = 0;
 var seconds = 76;
+var penalty = 10;
 
 
 var questions = [
@@ -49,7 +50,6 @@ var lastQuestion = questions.length;
 var runningQuestion = 0;
 var correct;
 
-
 function renderQuestion() {
     var question = questions[runningQuestion];
     $("#question").text(question.title);
@@ -57,11 +57,7 @@ function renderQuestion() {
     $("#b").text(question.choiceB);
     $("#c").text(question.choiceC);
     $("#d").text(question.choiceD);
-    renderQuestion()
-    runningQuestionIndex++;
-
 }
-renderQuestion();
 
 function startTimer() {
     timerInterval = setInterval(function () {
@@ -76,15 +72,17 @@ function startTimer() {
         }
 
     }, 1000);
-
 }
 
 function checkAnswer(answer) {
     correct = questions[runningQuestion].correctAnswer;
+
     if (answer === correct && runningQuestion !== lastQuestion) {
         $("#answer-result").show().text("Correct!").css("color", "green");
+        score++;
     } else {
         $("#answer-result").show().text("Incorrect!").css("color", "red");
+        seconds = seconds - penalty;
     }
     if (runningQuestion <= lastQuestion) {
         setTimeout(function () {
@@ -95,3 +93,19 @@ function checkAnswer(answer) {
 
     }
 }
+
+function startQuiz() {
+    $("#start-quiz-container").hide();
+    renderQuestion();
+    startTimer();
+    $("#during-quiz-container").show();
+}
+
+$("#start-quiz-button").click(function (event) {
+    event.preventDefault();
+    startQuiz();
+});
+
+
+
+
