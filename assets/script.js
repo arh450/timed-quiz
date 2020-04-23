@@ -1,6 +1,7 @@
 var score = 0;
 var seconds = 76;
 var penalty = 10;
+var timerInterval;
 
 
 var questions = [
@@ -21,7 +22,7 @@ var questions = [
         correctAnswer: "d"
     },
     {
-        title: "What player did Mr.Burns kick off The Springfield Nuclear Power Plant softball team for his sideburns?",
+        title: "What player did Mr.Burns kick off The Springfield Nuclear Power Plant softball team due to his sideburns?",
         choiceA: "Jose Canseco",
         choiceB: "Don Mattingly",
         choiceC: "Steve Sax",
@@ -29,7 +30,7 @@ var questions = [
         correctAnswer: "b"
     },
     {
-        title: "Which of these people played professional baseball and football simultaneously",
+        title: "Which of these people played professional baseball and football simultaneously?",
         choiceA: "David Wells",
         choiceB: "Dion Sanders",
         choiceC: "John Candy",
@@ -51,6 +52,9 @@ var runningQuestion = 0;
 var correct;
 
 function renderQuestion() {
+    if (runningQuestion >= lastQuestion) {
+        endQuiz();
+    }
     var question = questions[runningQuestion];
     $("#question").text(question.title);
     $("#a").text(question.choiceA);
@@ -67,10 +71,8 @@ function startTimer() {
 
         if (seconds <= 0) {
             clearInterval(timerInterval);
-            seconds = 0;
-            $("#time-remaining").text("Time Remaining: 0s");
+            endQuiz();
         }
-
     }, 1000);
 }
 
@@ -90,7 +92,6 @@ function checkAnswer(answer) {
             runningQuestion++;
             renderQuestion();
         }, 1000);
-
     }
 }
 
@@ -105,6 +106,15 @@ $("#start-quiz-button").click(function (event) {
     event.preventDefault();
     startQuiz();
 });
+
+function endQuiz() {
+    $("#start-quiz-container").hide();
+    $("#during-quiz-container").hide();
+    $("#end-quiz-container").show();
+    clearInterval(timerInterval);
+    $("#time-remaining").text("Time Remaining: -s")
+    $("#final-score").text("Final Score: " + score);
+}
 
 
 
