@@ -45,13 +45,13 @@ var questions = [
     }
 ];
 
-var lastQuestionIndex = questions.length - 1;
-var runningQuestionIndex = 0;
+var lastQuestion = questions.length;
+var runningQuestion = 0;
 var correct;
 
 
 function renderQuestion() {
-    var question = questions[runningQuestionIndex];
+    var question = questions[runningQuestion];
     $("#question").text(question.title);
     $("#a").text(question.choiceA);
     $("#b").text(question.choiceB);
@@ -80,12 +80,18 @@ function startTimer() {
 }
 
 function checkAnswer(answer) {
-    correct = questions[runningQuestionIndex].correctAnswer;
-
-    if (answer === correct && runningQuestionIndex !== lastQuestionIndex) {
-        $("#answer-result").text("Correct!").css("color", "green");
+    correct = questions[runningQuestion].correctAnswer;
+    if (answer === correct && runningQuestion !== lastQuestion) {
+        $("#answer-result").show().text("Correct!").css("color", "green");
     } else {
-        $("#answer-result").text("Incorrect!").css("color", "red");
+        $("#answer-result").show().text("Incorrect!").css("color", "red");
     }
+    if (runningQuestion <= lastQuestion) {
+        setTimeout(function () {
+            $("#answer-result").hide();
+            runningQuestion++;
+            renderQuestion();
+        }, 1000);
 
+    }
 }
