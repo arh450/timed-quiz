@@ -1,7 +1,9 @@
 var score = 0;
-var seconds = 76;
+var seconds = 1;
 var penalty = 10;
 var timerInterval;
+var timeRemaining;
+// var initials;
 
 
 var questions = [
@@ -51,16 +53,19 @@ var lastQuestion = questions.length;
 var runningQuestion = 0;
 var correct;
 
+
+
 function renderQuestion() {
     if (runningQuestion >= lastQuestion) {
         endQuiz();
+    } else {
+        var question = questions[runningQuestion];
+        $("#question").text(question.title);
+        $("#a").text(question.choiceA);
+        $("#b").text(question.choiceB);
+        $("#c").text(question.choiceC);
+        $("#d").text(question.choiceD);
     }
-    var question = questions[runningQuestion];
-    $("#question").text(question.title);
-    $("#a").text(question.choiceA);
-    $("#b").text(question.choiceB);
-    $("#c").text(question.choiceC);
-    $("#d").text(question.choiceD);
 }
 
 function startTimer() {
@@ -108,14 +113,27 @@ $("#start-quiz-button").click(function (event) {
 });
 
 function endQuiz() {
+    timeRemaining = seconds;
     $("#start-quiz-container").hide();
     $("#during-quiz-container").hide();
     $("#end-quiz-container").show();
     clearInterval(timerInterval);
     $("#time-remaining").text("Time Remaining: -s")
-    $("#final-score").text("Final Score: " + score);
+    $("#final-score").text("Final Score: " + score + " correct" + " and " + timeRemaining + " seconds left");
 }
 
+function initialSubmit() {
+    $("#initials-submit-button").click(function () {
+        var initials = $("input").val();
 
+        if (initials === "") {
+            $("#please-enter-intials").text("Please enter initials!").css("color", "red");
 
+        } else {
+            window.location.replace("./highScore.html");
+        }
+    });
+}
+
+initialSubmit();
 
