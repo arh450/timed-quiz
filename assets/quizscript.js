@@ -142,11 +142,12 @@ function initialSubmit() {
             } else {
                 allScoresStorage = JSON.parse(allScoresStorage);
             }
+
             allScoresStorage.push(finalScore);
             var newScore = JSON.stringify(allScoresStorage);
             localStorage.setItem("allScoresStorage", newScore);
 
-            // window.location.replace("./highScore.html");
+            window.location.replace("./highScore.html");
         }
     });
 }
