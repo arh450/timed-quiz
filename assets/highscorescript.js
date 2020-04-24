@@ -5,20 +5,23 @@ $("#clear-score-button").click(function (event) {
     location.reload();
 });
 
-var allScoresStorage = localStorage.getItem("allScoresStorage");
-allScoresStorage = JSON.parse(allScoresStorage).sort(function (a, b) {
-    return b.score - a.score;
+$("#goback-button").click(function (event) {
+    window.location.replace("./index.html");
 });
 
 function displayScores() {
 
+    var allScoresStorage = localStorage.getItem("allScoresStorage");
+    allScoresStorage = JSON.parse(allScoresStorage).sort(function (a, b) {
+        return b.score - a.score;
+    });
     if (allScoresStorage !== null) {
 
         for (var i = 0; i < allScoresStorage.length; i++) {
 
             var scoreListItem = $("<li>");
             scoreListItem.addClass("score-list-item");
-            scoreListItem.text(allScoresStorage[i].initials + " " + allScoresStorage[i].score + " " + allScoresStorage[i].timeRemaining);
+            scoreListItem.text("INT: " + allScoresStorage[i].initials + ", SCR: " + allScoresStorage[i].score + ", TR: " + allScoresStorage[i].timeRemaining);
             $("#highscore-list").append(scoreListItem);
 
         }
@@ -27,6 +30,3 @@ function displayScores() {
 
 displayScores();
 
-$("#goback-button").click(function (event) {
-    window.location.replace("./index.html");
-});
