@@ -1,9 +1,9 @@
 var score = 0;
-var seconds = 1;
+var seconds = 76;
 var penalty = 10;
 var timerInterval;
 var timeRemaining;
-// var initials;
+var initials;
 
 
 var questions = [
@@ -124,13 +124,29 @@ function endQuiz() {
 
 function initialSubmit() {
     $("#initials-submit-button").click(function () {
-        var initials = $("input").val();
+        initials = $("input").val();
 
         if (initials === "") {
             $("#please-enter-intials").text("Please enter initials!").css("color", "red");
 
         } else {
-            window.location.replace("./highScore.html");
+            var finalScore = {
+                initials: initials,
+                score: score,
+                timeRemaining: timeRemaining
+            }
+            // console.log(finalScore);
+            var allScoresStorage = localStorage.getItem("allScoresStorage");
+            if (allScoresStorage === null) {
+                allScoresStorage = [];
+            } else {
+                allScoresStorage = JSON.parse(allScoresStorage);
+            }
+            allScoresStorage.push(finalScore);
+            var newScore = JSON.stringify(allScoresStorage);
+            localStorage.setItem("allScoresStorage", newScore);
+
+            // window.location.replace("./highScore.html");
         }
     });
 }
