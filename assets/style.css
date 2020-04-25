@@ -26,7 +26,6 @@ body {
     top: 0;
     left: 0px;
     right: 0;
-    
 }
 
 #end-quiz-container {
@@ -35,7 +34,6 @@ body {
     top: 0;
     left: 0px;
     right: 0;
-    
 }
 
 /* HEADER NAVBAR FOR INDEX PAGE*/
@@ -83,10 +81,9 @@ body {
     padding: 15px;
     font-size: 25px;
     margin: 0 0 0 15px;
-    
 }
 
-/* MAIN CONTENT SECTION & CONTENT-BOX INDEX & HIGHSCORE PAGE*/
+/* MAIN CONTENT SECTION/CONTENT-BOX FOR INDEX & HIGHSCORE PAGE*/
 section {
     position: relative;
     margin: 50px auto 150px auto;
@@ -101,7 +98,7 @@ section {
     margin: 0 auto 0 auto;
 }
 
-/* AREA 1 STYLING INDEX & HIGHSCORE PAGE */
+/* AREA 1 STYLING FOR INDEX & HIGHSCORE PAGE */
 .area-1 > h4 {
     color: #000;
     font-size: 28px;
@@ -172,15 +169,12 @@ section {
 }
 
 /* AREA 2 FOR HIGHSCORE PAGE */
-#highscore-list {
-    text-align: center;
-    
-}
-
 .score-list-item {
     font-size: 20px;
     background-color: #B21515;
     color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
     border: 2px solid #102245;
     border-radius: 5px;
     padding: 10px;

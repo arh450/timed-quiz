@@ -1,3 +1,4 @@
+// Declared variables pertaining to overall game.
 var score = 0;
 var seconds = 76;
 var penalty = 10;
@@ -5,7 +6,7 @@ var timerInterval;
 var timeRemaining;
 var initials;
 
-
+// Array with objects containing questions, choices, and correct answers.
 var questions = [
     {
         title: "Who is the current all-time homerun leader?",
@@ -49,12 +50,26 @@ var questions = [
     }
 ];
 
+// Declared variables pertaining to rendered question/position of index.
 var lastQuestion = questions.length;
 var runningQuestion = 0;
 var correct;
 
+// Function that hides/shows start/during quiz container, renders a question, and begins the timer.
+function startQuiz() {
+    $("#start-quiz-container").hide();
+    renderQuestion();
+    startTimer();
+    $("#during-quiz-container").show();
+}
 
+// On click of start quiz button that triggers the start quiz function and makes quiz begin.
+$("#start-quiz-button").click(function (event) {
+    event.preventDefault();
+    startQuiz();
+});
 
+// Function that uses the questions array of objects and displays the question and choices to the html... and when the running question count is greater than the length of the array calls the endquiz function described below.
 function renderQuestion() {
     if (runningQuestion >= lastQuestion) {
         endQuiz();
@@ -68,6 +83,7 @@ function renderQuestion() {
     }
 }
 
+// Time function that decreases amount of seconds by 1 and displays time remaing on html, and when (if) seconds reaches 0 stops the timer and calls the endquiz function.
 function startTimer() {
     timerInterval = setInterval(function () {
         seconds--;
@@ -81,6 +97,7 @@ function startTimer() {
     }, 1000);
 }
 
+// Function that compares array object position to the users onclick of choice button detailed in html and if correct adds 1 to the score and a "Correct!" is flashed on html, and if incorrect 10 seconds is removed from the timer and a "Incorrect!" is flashed on html. These is then 1 second before the next question is rendered.  
 function checkAnswer(answer) {
     correct = questions[runningQuestion].correctAnswer;
 
@@ -100,18 +117,7 @@ function checkAnswer(answer) {
     }
 }
 
-function startQuiz() {
-    $("#start-quiz-container").hide();
-    renderQuestion();
-    startTimer();
-    $("#during-quiz-container").show();
-}
-
-$("#start-quiz-button").click(function (event) {
-    event.preventDefault();
-    startQuiz();
-});
-
+// Function that hides the start and during quiz containers and shows the end quiz container.  Function also stops the timer and replaces the time to a "-s", and in the content box the users correct score and time they had remaining is shown.
 function endQuiz() {
     timeRemaining = seconds;
     $("#start-quiz-container").hide();
@@ -122,6 +128,7 @@ function endQuiz() {
     $("#final-score").text("Final Score: " + score + " correct" + " and " + timeRemaining + " seconds left");
 }
 
+// Function that takes and ensures the user has input their initials, and then stores their quiz data into localstorage and then loads the highscore html.
 function initialSubmit() {
     $("#initials-submit-button").click(function () {
         initials = $("input").val();
