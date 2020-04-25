@@ -174,10 +174,20 @@ section {
 /* AREA 2 FOR HIGHSCORE PAGE */
 #highscore-list {
     text-align: center;
+    
+}
+
+.score-list-item {
     font-size: 20px;
-    color: #000;
+    background-color: #B21515;
+    color: #ffffff;
+    border: 2px solid #102245;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px auto;
     list-style: none;
 }
+
 
 /* AREA 3 STYLING FOR INDEX & HIGHSCORE PAGE*/
 .area-3 {
