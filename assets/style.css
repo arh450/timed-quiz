@@ -4,6 +4,7 @@
     margin: 0;
 }
 
+/* CSS ESSENTIAL FOR FUNCTIONALITY OF QUIZ */
 #during-quiz-container {
     display: none;
 }
@@ -12,7 +13,39 @@
     display: none;
 }
 
-/* #highscore-container {
-    display: none;
-} */
+/* HEADER NAVBAR FOR INDEX.HTML */
+.navbar {
+    background-color: 	#403010;
+    color: #ffffff;
+    padding: 20px;
+    margin: 0;
+}
 
+#view-highscores {
+    background-color: #803008;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius:  5px;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 25px;
+}
+
+#time-remaining{
+    font-size: 20px;
+    margin: 5px 0px 0px 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* HEADER NAVBAR FOR HIGHSCORE.HTML */
+#highscore-page-title {
+    background-color: #803008;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius:  5px;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 25px;
+}
