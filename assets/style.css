@@ -14,21 +14,28 @@ body {
 
 /* CSS ESSENTIAL FOR FUNCTIONALITY OF QUIZ */
 #start-quiz-container {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    right: 0;
 }
 
 #during-quiz-container {
     display: none;
     position: absolute;
-    top: 158px;
-    right: 182px;
+    top: 0;
+    left: 0px;
+    right: 0;
+    
 }
 
 #end-quiz-container {
     display: none;
     position: absolute;
-    top: 158px;
-    right: 182px;
+    top: 0;
+    left: 0px;
+    right: 0;
+    
 }
 
 /* HEADER NAVBAR FOR INDEX.HTML */
@@ -43,6 +50,7 @@ body {
     background-color: #102245;
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
     border: none;
     border-radius:  5px;
     text-decoration: none;
@@ -68,6 +76,7 @@ body {
     background-color: #a39193;
     color: #000;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
     border: none;
     border-radius:  5px;
     text-decoration: none;
@@ -78,9 +87,13 @@ body {
 
 /* MAIN CONTENT SECTION & CONTENT-BOX*/
 section {
-    margin: 50px 0 300px 0;
+    position: relative;
+    margin: 50px auto 150px auto;
 }
 
+.content-box {
+    margin: 0 auto 0 auto;
+}
 .col-md-10 {
     background-color: rgba(246, 240, 240, .65);
     padding: 20px;
